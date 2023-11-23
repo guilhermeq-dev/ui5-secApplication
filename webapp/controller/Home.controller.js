@@ -49,14 +49,14 @@ sap.ui.define([
                  var oModel = new JSONModel(products)
                  this.getView().setModel(oModel, "productsList")
             },
-            /*onPress: function(oEvent) {
+            onPress: function(oEvent) {
                 const item = oEvent.getSource()
                 const itemTitle = item.GetTittle()
                 const message = `O item ${itemTitle} foi clicado!`
                 MessageToast(message, {
                     title: "Informação do item"
                 })
-            },*/
+            },
             onFilterProducts: function (oEvent) {
                 var aFilter = []
                 const sQuery = oEvent.getParameter("query")
