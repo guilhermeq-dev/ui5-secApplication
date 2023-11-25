@@ -1,99 +1,121 @@
 <mvc:View controllerName="com.lab2dev.secapplication.controller.Home"
     xmlns:mvc="sap.ui.core.mvc" 
 	displayBlock="true"
-    xmlns:core="sap.ui.core"
-	xmlns="sap.m">
+	xmlns="sap.m" xmlns:core="sap.ui.core">
     
 	<Page id="page" title="{i18n>title}">
         
-        <Table 
-            id="productsTable"
-            inset="false"
-            items="{productsList>/}"
-		>
-
-			<headerToolbar>
-				<OverflowToolbar>
-					<content>
-						<Title text="Products" level="H2"/>
-						
-						<ToolbarSpacer />
-							
-						<SearchField width="50%" search=".onFilterProducts"/>
-						
-							<ComboBox id="idPopinLayout" placeholder="Popin layout options"	change="onPopinLayoutChanged">
-								<items>
-									<core:Item text="Block"	key="Block"/>
-									<core:Item text="Grid Large" key="GridLarge"/>
-									<core:Item text="Grid Small" key="GridSmall"/>
-								</items>
-							</ComboBox>
-
-							<Label text="Sticky options:"/>
-
-							<CheckBox text="ColumnHeaders"	select="onSelect"/>
-
-							<CheckBox text="HeaderToolbar"	select="onSelect"/>
-
-							<CheckBox text="InfoToolbar" select="onSelect"/>
-
-						<ToggleButton id="toggleInfoToolbar" text="Hide/Show InfoToolbar" press="onToggleInfoToolbar"/>
-					</content>
-				</OverflowToolbar>
-			</headerToolbar>
-
-			<infoToolbar>
-				<OverflowToolbar>
-					<Label text="Wide range of available products"/>
-				</OverflowToolbar>
-			</infoToolbar>
-
-			<columns>
-				<Column width="12em">
-					<Text text="Product"/>
-				</Column>
-				<Column minScreenWidth="Tablet"	demandPopin="true">
-					<Text text="Supplier"/>
-				</Column>
-				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
-					<Text text="Dimensions"/>
-				</Column>
-				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
-					<Text text="Weight"/>
-				</Column>
-				<Column hAlign="End">
-					<Text text="Price"/>
-				</Column>
-			</columns>
-		
-			<items>
-				<ColumnListItem vAlign="Middle">
-					<cells>
-						<ObjectIdentifier title="{productsList>product}" text="{productsList>productId}"/>
-						<Text text="{productsList>supplierName}"/>
-						<Text text="{productsList>width} x {productsList>depth} x {productsList>height} {productsList>dimUnit}"/>
-						<ObjectNumber
-							number="{productsList>weight}"
-							unit="{productsList>weightUnit}"
-							state="{
-								parts: [
-										{path: 'productsList>weigth'},
-										{path: 'productsList>weightUnit'}
+            <Table
+                id="productTable"
+                inset="false"
+                items="{productsList>/}"
+				>
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content >
+                            <Button icon="sap-icon://begin" press="onNavTo"/>
+                            <Title text="Products" level="H2" />
+                            <ToolbarSpacer/>
+                            <SearchField width="50%" search=".onFilterProducts" />
+                            <ComboBox 
+									id="idPopinLayout"
+                                	placeholder="Popin layout options"
+                                	change="onPopinLayoutChanged">
+                                <items>
+                                    <core:Item 
+										text="Block"
+                                        key="Block" />
+                                    <core:Item 
+										text="Grid Large"
+                                        key="GridLarge" />
+                                    <core:Item 
+										text="Grid Small"
+                                        key="GridSmall" />
+                                </items>
+                            </ComboBox>
+                            <Label text="Sticky options:" />
+                            <CheckBox 
+								text="ColumnHeaders"
+                                select="onSelect" />
+                            <CheckBox 
+								text="HeaderToolbar"
+                                select="onSelect" />
+                            <CheckBox 
+								text="InfoToolbar"
+                                select="onSelect" />
+                            <ToggleButton 
+								id="toggleInfoToolbar"
+                                text="Hide/Show InfoToolbar"
+                                press="onToggleInfoToolbar" />
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <infoToolbar>
+                    <OverflowToolbar>
+                        <Label text="Wide range of available products" />
+                    </OverflowToolbar>
+                </infoToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Product" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Tablet"
+                        demandPopin="true">
+                        <Text text="Supplier" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="End">
+                        <Text text="Dimensions" />
+                    </Column>
+                    <Column
+                        minScreenWidth="Desktop"
+                        demandPopin="true"
+                        hAlign="Center">
+                        <Text text="Weight" />
+                    </Column>
+                    <Column
+                        hAlign="End">
+                        <Text text="Price" />
+                    </Column>
+                </columns>
+                <items >
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <ObjectIdentifier 
+								title="{productsList>Name}"
+                                text="{productsList>ProductId}"/>
+                            <Text text="{productsList>SupplierName}" />
+                            <Text
+                                text="{productsList>Width} x 
+									  {productsList>Depth} x 
+									  {productsList>Height} 
+									  {productsList>DimUnit}" />
+                            <ObjectNumber
+                                number="{productsList>WeightMeasure}"
+                                unit="{productsList>WeightUnit}"
+                                state="{
+                                parts: [
+                                    {path: 'productsList>WeightMeasure'},
+                                    {path: 'productsList>WeightUnit'}
+                                ],
+                                formatter: '.formatter.weightState'
+                            }" />
+                            <ObjectNumber
+                                number="{
+                                parts:[
+										{path:'productsList>Price'},
+										{path:'productsList>CurrencyCode'}
 									],
-									formatter: 'com.lab2dev.secapplication.controller.Formatter.weightState'
-								}"/>
-						<ObjectNumber
-								number="{
-									parts:[
-										{path: 'productsList>price'},
-										{path: 'productsList>currencyCode'}],
-									type: 'sap.ui.model.type.Currency',
-									formatOptions: {showMeasure: false}
-								}"
-								unit="{productsList>currencyCode}" />
-					</cells>
-				</ColumnListItem>
-			</items>
-		</Table>
+                                type: 'sap.ui.model.type.Currency',
+                                formatOptions: {showMeasure: false}
+                            }"
+                                unit="{productsList>CurrencyCode}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>     
     </Page>
 </mvc:View>

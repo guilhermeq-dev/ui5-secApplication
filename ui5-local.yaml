@@ -29,6 +29,14 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertError: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:
+          - path: /northwind
+            url: https://services.odata.org
+          - path: /northwind
+            url: https://services.odata.org
+          - path: /northwind/northwind.svc/
+            url: https://services.odata.org
+            client: ssd
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:

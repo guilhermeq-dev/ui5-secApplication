@@ -15,6 +15,14 @@ server:
             - /resources
             - /test-resources
           url: https://ui5.sap.com
+        backend:
+          - path: /northwind
+            url: https://services.odata.org
+          - path: /northwind
+            url: https://services.odata.org
+          - path: /northwind/northwind.svc/
+            url: https://services.odata.org
+            client: ssd
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

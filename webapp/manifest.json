@@ -79,9 +79,16 @@
       "routes": [
         {
           "name": "RouteHome",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "TargetHome"
+          ]
+        },
+        {
+          "name": "ProductDetail",
+          "pattern": "product-detail",
+          "target": [
+            "TargetProductDetail"
           ]
         }
       ],
@@ -92,6 +99,13 @@
           "clearControlAggregation": false,
           "viewId": "Home",
           "viewName": "Home"
+        },
+        "TargetProductDetail": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "ProductDetail",
+          "viewName": "ProductDetail"
         }
       }
     },
