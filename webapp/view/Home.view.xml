@@ -8,7 +8,7 @@
             <Table
                 id="productTable"
                 inset="false"
-                items="{productsList>/}"
+                items="{ path: '/Products' }"
 				>
                 <headerToolbar>
                     <OverflowToolbar>
@@ -62,19 +62,19 @@
                     <Column
                         minScreenWidth="Tablet"
                         demandPopin="true">
-                        <Text text="Supplier" />
+                        <Text text="Supplier ID" />
                     </Column>
                     <Column
                         minScreenWidth="Desktop"
                         demandPopin="true"
                         hAlign="End">
-                        <Text text="Dimensions" />
+                        <Text text="Units In Stock" />
                     </Column>
                     <Column
                         minScreenWidth="Desktop"
                         demandPopin="true"
                         hAlign="Center">
-                        <Text text="Weight" />
+                        <Text text="Units On Order" />
                     </Column>
                     <Column
                         hAlign="End">
@@ -85,34 +85,22 @@
                     <ColumnListItem vAlign="Middle">
                         <cells>
                             <ObjectIdentifier 
-								title="{productsList>Name}"
-                                text="{productsList>ProductId}"/>
-                            <Text text="{productsList>SupplierName}" />
+								title="{ProductName}"
+                                text="{ProductID}"/>
+                            <Text text="{SupplierID}" />
                             <Text
-                                text="{productsList>Width} x 
-									  {productsList>Depth} x 
-									  {productsList>Height} 
-									  {productsList>DimUnit}" />
+                                text="{UnitsInStock}" />
                             <ObjectNumber
-                                number="{productsList>WeightMeasure}"
-                                unit="{productsList>WeightUnit}"
-                                state="{
-                                parts: [
-                                    {path: 'productsList>WeightMeasure'},
-                                    {path: 'productsList>WeightUnit'}
+                                number="{UnitsOnOrder}"
+                                state="{ 
+                                    parts: [ 
+                                        {path: 'productsList>WeightMeasure'} 
                                 ],
                                 formatter: '.formatter.weightState'
                             }" />
-                            <ObjectNumber
-                                number="{
-                                parts:[
-										{path:'productsList>Price'},
-										{path:'productsList>CurrencyCode'}
-									],
-                                type: 'sap.ui.model.type.Currency',
-                                formatOptions: {showMeasure: false}
-                            }"
-                                unit="{productsList>CurrencyCode}" />
+                            <ObjectNumber number="{
+                                                path:'UnitPrice'    
+                                            }"/>
                         </cells>
                     </ColumnListItem>
                 </items>

@@ -14,6 +14,17 @@
       "id": "@sap/generator-fiori:basic",
       "version": "1.11.4",
       "toolsId": "a7c936cd-ce5e-4a89-8ac4-516da2e135f0"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/northwind/northwind.svc/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
     }
   },
   "sap.ui": {

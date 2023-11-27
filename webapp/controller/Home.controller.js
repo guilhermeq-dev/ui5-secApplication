@@ -93,6 +93,10 @@ sap.ui.define([
 
         var oModel = new JSONModel(products);
         this.getView().setModel(oModel, "productsList");
+
+        var oDataModel = new ODataModel("/northwind/northwind.svc/")
+        this.getView().setModel(oDataModel)
+
       },
       onPress: function (oEvent) {
         const item = oEvent.getSource();
@@ -106,7 +110,7 @@ sap.ui.define([
         var aFilter = [];
         const sQuery = oEvent.getParameter("query");
         if (sQuery) {
-          aFilter.push(new Filter("Name", FilterOperator.Contains, sQuery));
+          aFilter.push(new Filter("ProductName", FilterOperator.Contains, sQuery));
         }
         const oTable = this.byId("productTable");
         const oBinding = oTable.getBinding("items");
@@ -158,6 +162,7 @@ sap.ui.define([
         var oTable = this.byId("productTable");
         oTable.getInfoToolbar().setVisible(!oEvent.getParameter("pressed"));
       },
+      // navegacão
       onNavTo: function() {
         this.getOwnerComponent().getRouter().navTo("ProductDetail")
       }
