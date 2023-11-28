@@ -96,7 +96,7 @@
                                     parts: [ 
                                         {path: 'productsList>WeightMeasure'} 
                                 ],
-                                formatter: '.formatter.weightState'
+                                formatter: '../formatter.weightState'
                             }" />
                             <ObjectNumber number="{
                                                 path:'UnitPrice'    

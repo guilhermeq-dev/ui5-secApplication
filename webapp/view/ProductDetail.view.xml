@@ -15,19 +15,20 @@
                 headerLevel="H2"
                 items="{/Products}"
                 id="idList"
-                >
-
+            >
                     <ObjectListItem
                         title="{ProductName}"
                         type="Active"
                         press="onPress"
                         number="{UnitPrice}"
+                        numberUnit="USD"
                         >
                         <firstStatus>
-                           
+                               <ObjectStatus text="{Discontinued}" state="Success"></ObjectStatus>
                         </firstStatus>
 
-                        <ObjectAttribute text="{ProductName} {UnitsInStock}" />
+                        <ObjectAttribute text="{UnitsInStock} in Stock" />
+                        <ObjectAttribute text="{QuantityPerUnit}" />
                         
                     </ObjectListItem>
             </List>

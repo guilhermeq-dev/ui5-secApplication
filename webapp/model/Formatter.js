@@ -3,7 +3,7 @@ sap.ui.define(function(){
 
 	const Formatter = {
 			status: function(sStatus){
-					if(sStatus === "Available") {
+					if(sStatus === "Success") {
 							return "Success"
 					}
 					else if(sStatus === "Out of Stock") {
